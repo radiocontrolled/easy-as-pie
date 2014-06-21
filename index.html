@@ -32,17 +32,17 @@
 
     <div class="container">
      <h1>Population data for USA and Canada</h1>
-     <hr/>
-      <div class="row">
+     <hr/> 
+   
+     <div class="row">
         <div class="col-md-12" ng-controller="PopulationDisplayer as display">
-         	<ul ng-repeat="pop in display.population">
-         		<li>{{pop.countryName}}</li>
-         			<ul>
-         				<li>{{pop.population}}</li>
-         			</ul>
+         	<ul>
+         		<li ng-repeat="pop in display.population">{{pop.countryName}}, {{pop.population}}</li>
+         		
          	</ul>
         </div>
       </div>
+    
 
 
      
