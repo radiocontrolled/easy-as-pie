@@ -1,6 +1,6 @@
-
+console.log("foo");
 (function(){
-	var drawPie = angular.module('EasyAsPie', ['ngCsvImport'])  
+	var drawPie = angular.module('EasyAsPie', [])  
 	drawPie.controller('Controller', function(){
 		this.someData = someData;
 	})	
