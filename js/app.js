@@ -1,12 +1,11 @@
 
 (function(){
-	var app = angular.module('EasyAsPie', [])
-	
-	.controller('Controller', function(){
+	var drawPie = angular.module('EasyAsPie', ['ngCsvImport'])  
+	drawPie.controller('Controller', function(){
 		this.someData = someData;
 	})	
 
-	.directive('pieChart', function(){
+	drawPie.directive('pieChart', function(){
 	
 		var w = window.innerWidth/2;
 		var h = window.innerHeight/2;
@@ -56,13 +55,17 @@
 		};
 	});
 
+	
 	/* to replace with user input */
 	var someData = [
 		{
 			label: ["cats","dogs","elephants","anteaters","dolphins"],
 			value: [1,2,3,4,5]
 		}
-	];		
+	];
+	
+
+			
 })();
 
 /* ad longdesc text */ 
