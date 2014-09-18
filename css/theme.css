@@ -14,6 +14,13 @@ body {
     color: white;
 }
 
+/* form validation */
+.ng-invalid{
+	border-color: red;
+}
+.ng-dirty.ng-valid{
+	border-color: green;
+}
 
 
 /* pie chart style */
