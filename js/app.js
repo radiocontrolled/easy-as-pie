@@ -1,9 +1,15 @@
 /*
 * development data 
-* https://docs.google.com/spreadsheets/d/1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc/pubhtml 
+* 1. https://docs.google.com/spreadsheets/d/1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc/pubhtml 
+* 2. https://docs.google.com/spreadsheets/d/1fAt25b1_K4g4NWwnrT6D--ylyRHFg045YVyi6_Zea9A/pubhtml
 */
 	
 (function(){
+	
+	function testCallBack(){
+		alert("hi");
+	}
+	
 	var drawPie = angular.module('EasyAsPie', []);
 	
 	drawPie.controller('GoogleAppsKey', ['$scope', function($scope) {
@@ -13,7 +19,6 @@
 	
 		function link(scope, element, attr){	
 	
-			var foo = scope.data;
 			console.log(scope.data);
 			
 			var w = window.innerWidth/2;
@@ -73,17 +78,25 @@
 			restrict: 'A',
 		    controller: function($scope,$element){
 		    	 $scope.text = "1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc";
+		    	 $scope.data = [];
 	     		 $scope.submitKey = function(value) {
 	        		if ($scope.text) {
+	        			var foobar = [];
 	         			Tabletop.init( 
 							{ 
 								key: this.text,
 								callback: function(userData, tabletop) { 
 									for (var obj in userData){
-											//console.log(userData[obj]);
-											
-										
+										if(userData.hasOwnProperty(obj)){
+											for (var key in userData[obj]){
+												if(key == "value"){
+													foobar.push(parseFloat(userData[obj][key]));
+												}
+											}
+											}					
 									}
+									$scope.data = foobar;
+									console.log($scope.data);
 								
 								},
 							simpleSheet: true }
