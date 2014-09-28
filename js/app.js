@@ -1,26 +1,20 @@
-
+/*
+* development data 
+* https://docs.google.com/spreadsheets/d/1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc/pubhtml 
+*/
+	
 (function(){
 	var drawPie = angular.module('EasyAsPie', []);
 	
 	drawPie.controller('GoogleAppsKey', ['$scope', function($scope) {
-	     // $scope.text = '1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc';
-	      $scope.text = "";
-	      $scope.submitKey = function(value) {
-	        if ($scope.text) {
-	         console.log(this.text);
-	        }
-	      };
-	    }]);
-
-
+	}]);
 
 	drawPie.directive('pieChart', function(){
 	
 		function link(scope, element, attr){	
 	
 			var foo = scope.data;
-			console.log(foo);
-			
+			console.log(scope.data);
 			
 			var w = window.innerWidth/2;
 			var h = window.innerHeight/2;
@@ -65,17 +59,38 @@
 					return d.value;
 				});
 		
-
+			/*
 			scope.$watch('data', function(data){
-			
+				console.log(scope.text);
 			}, true);
+			*/
+			
 		
 		}
 	
 		return {
 			link: link,
 			restrict: 'A',
-		    scope: {data: "@"}
+		    controller: function($scope,$element){
+		    	 $scope.text = "1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc";
+	     		 $scope.submitKey = function(value) {
+	        		if ($scope.text) {
+	         			Tabletop.init( 
+							{ 
+								key: this.text,
+								callback: function(userData, tabletop) { 
+									for (var obj in userData){
+											//console.log(userData[obj]);
+											
+										
+									}
+								
+								},
+							simpleSheet: true }
+						);
+	        		}
+	      		}; 
+		    }
         };
 
 	
@@ -89,19 +104,7 @@
 			value: [1,2,3,4,5]
 		}
 	];
-	
-	
-	/*
-	 * test data 
-	 * https://docs.google.com/spreadsheets/d/1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc/pubhtml 
-	 */
-	Tabletop.init( 
-		{ 
-			key: '1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc',
-			callback: function(userData, tabletop) { 
-				//console.log(userData) 
-		},
-		simpleSheet: true });
+
 			
 })();
 

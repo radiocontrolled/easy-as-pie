@@ -33,13 +33,14 @@
 
 	    <div class="container">
 	     <div class="row" >
-	     
+	     	<p>Sample Google Spreadsheet template viewable <a href="https://docs.google.com/spreadsheets/d/1J8RfmzBB6yID1W2shnsqkSAQCiOH_z6B6_l9e5tgaKc/pubhtml">here</a>.</p>
 		   <form name="GoogleApps" ng-submit="GoogleApps.$valid && submitKey(value)" ng-controller="GoogleAppsKey" novalidate>
 				<label>Google Spreadsheet ID:</label>
-				<input type="text" ng-model="text" name="text" required/>
+				<input type="text" ng-model="text" name="text" size="55" required/>
 				<input type="submit" id="submit" value="Submit" />	
 		   </form>
 		   <hr/>
+		   
 		   
 	       <div class="col-md-12" pie-chart data="{{key}}">
 	         	<section></section>
